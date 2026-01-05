@@ -6,9 +6,9 @@ import { Blocks, Code2, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { api } from "../../../../convex/_generated/api";
 import HeaderProfileBtn from "./HeaderProfileBtn";
+import LanguageSelector from "./LanguageSelector";
 import RunButton from "./RunButton";
 import ThemeSelector from "./ThemeSelector";
-import LanguageSelector from "./LanguageSelector";
 
 async function Header() {
   const convex = new ConvexHttpClient(
@@ -44,7 +44,7 @@ async function Header() {
 
             <div className="flex flex-col">
               <span className="block text-lg font-semibold bg-linear-to-r from-blue-400 via-blue-300 to-purple-400 text-transparent bg-clip-text">
-                Codemon
+                CODEMON
               </span>
               <span className="block text-xs text-blue-400/60 font-medium">
                 Interactive Code Editor
