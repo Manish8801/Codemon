@@ -9,7 +9,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
-import EditorPanelSkeleton from "./EditorPanelSkeleton";
+import { EditorPanelSkeleton } from "./EditorPanelSkeleton";
 import ShareSnippetDialog from "./ShareSnippetDialog";
 
 const EditorPanel = () => {
@@ -34,9 +34,22 @@ const EditorPanel = () => {
     if (savedFontSize) setFontSize(parseInt(savedFontSize));
   }, [setFontSize]);
 
-  const handleRefresh = () => {};
-  const handleEditorChange = () => {};
-  const handleFontSizeChange = (fontSize: number) => {};
+  const handleRefresh = () => {
+     const defaultCode = LANGUAGE_CONFIG[language].defaultCode;
+     if (editor) editor.setValue(defaultCode);
+     localStorage.removeItem(`editor-code-${language}`);
+
+  };
+  const handleEditorChange = (value : string | undefined) => {
+     if (value) localStorage.setItem(`editor-code-${language}`, value);
+
+  };
+  const handleFontSizeChange = (newFontSize: number) => {
+    const size = Math.min(Math.max(newFontSize, 12), 24);
+    setFontSize(size);
+    localStorage.setItem("editor-font-size", size.toString());
+
+  };
   if (!mounted) return null;
 
   return (
@@ -116,7 +129,7 @@ const EditorPanel = () => {
               beforeMount={defineMonacoThemes}
               onMount={(editor) => setEditor(editor)}
               options={{
-                minimap: { enabled: false },
+                minimap: { enabled: true },
                 fontSize,
                 automaticLayout: true,
                 scrollBeyondLastLine: false,
