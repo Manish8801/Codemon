@@ -1,5 +1,6 @@
 "use client";
 
+import useMounted from "@/hooks/useMounted";
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import {
   AlertTriangle,
@@ -14,7 +15,7 @@ import RunningCodeSkeleton from "./RunningCodeSkeleton";
 function OutputPanel() {
   const { output, error, isRunning } = useCodeEditorStore();
   const [isCopied, setIsCopied] = useState(false);
-
+  const mounted  = useMounted()
   const hasContent = error || output;
 
   const handleCopy = async () => {
@@ -24,6 +25,10 @@ function OutputPanel() {
 
     setTimeout(() => setIsCopied(false), 2000);
   };
+
+  if (!mounted) {
+    return <RunningCodeSkeleton />;
+  }
 
   return (
     <div className="relative bg-[#181825] rounded-xl p-4 ring-1 ring-gray-800/50">
