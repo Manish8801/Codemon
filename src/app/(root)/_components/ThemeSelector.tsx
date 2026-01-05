@@ -1,4 +1,6 @@
 "use client";
+
+import useMounted from "@/hooks/useMounted";
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import {
   CircleOff,
@@ -26,7 +28,7 @@ const ThemeSelector = () => {
   const { theme, setTheme } = useCodeEditorStore();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const currentTheme = THEMES.find((t) => t.id === theme);
-
+const mounted = useMounted();
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -40,6 +42,8 @@ const ThemeSelector = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+    if (!mounted) return null;
 
 
 

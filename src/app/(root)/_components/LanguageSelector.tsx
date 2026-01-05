@@ -5,13 +5,14 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { LANGUAGE_CONFIG } from "../_constants";
+import useMounted from "@/hooks/useMounted";
 
 type Props = {
   hasAccess: boolean;
 };
 function LanguageSelector({ hasAccess }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-
+const mounted = useMounted();
   const { language, setLanguage } = useCodeEditorStore();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const currentLanguageObj = LANGUAGE_CONFIG[language];
@@ -36,6 +37,7 @@ function LanguageSelector({ hasAccess }: Props) {
     setLanguage(langId);
     setIsOpen(false);
   };
+  if (!mounted) return null;
 
   return (
     <div className="relative" ref={dropdownRef}>
