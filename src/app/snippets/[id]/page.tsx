@@ -13,7 +13,7 @@ import Comments from "./_components/Comments";
 import CopyButton from "./_components/CopyButton";
 import SnippetLoadingSkeleton from "./_components/SnippetLoadingSkeleton";
 
-function SnippetDetailPage() {
+export default function SnippetDetailPage() {
   const snippetId = useParams().id;
 
   const snippet = useQuery(api.snippets.getSnippetById, {
@@ -107,4 +107,4 @@ function SnippetDetailPage() {
     </div>
   );
 }
-export default SnippetDetailPage;
+

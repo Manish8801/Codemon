@@ -1,11 +1,11 @@
 "use client";
+import useMounted from "@/hooks/useMounted";
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import { ChevronDownIcon, Lock, Sparkles } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { LANGUAGE_CONFIG } from "../_constants";
-import useMounted from "@/hooks/useMounted";
 
 type Props = {
   hasAccess: boolean;

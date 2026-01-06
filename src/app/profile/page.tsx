@@ -2,15 +2,16 @@
 
 import NavigationHeader from "@/components/NavigationHeader";
 import StarButton from "@/components/StarButton";
+import useMounted from "@/hooks/useMounted";
 import { useUser } from "@clerk/nextjs";
 import { usePaginatedQuery, useQuery } from "convex/react";
 import {
-    ChevronRight,
-    Clock,
-    Code,
-    ListVideo,
-    Loader2,
-    Star,
+  ChevronRight,
+  Clock,
+  Code,
+  ListVideo,
+  Loader2,
+  Star,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
@@ -36,7 +37,7 @@ const TABS = [
 ];
 
 function ProfilePage() {
-    const [mounted, setMounted] = useState(false);
+    const mounted = useMounted();
   const { user, isLoaded } = useUser();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"executions" | "starred">(

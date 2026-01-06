@@ -32,7 +32,7 @@ const EditorPanel = () => {
   useEffect(() => {
     const savedFontSize = localStorage.getItem(`editor-font-size-${language}`);
     if (savedFontSize) setFontSize(parseInt(savedFontSize));
-  }, [setFontSize]);
+  }, [setFontSize, language]);
 
   const handleRefresh = () => {
      const defaultCode = LANGUAGE_CONFIG[language].defaultCode;

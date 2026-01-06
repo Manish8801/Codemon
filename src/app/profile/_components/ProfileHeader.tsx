@@ -1,3 +1,4 @@
+"use client";
 import { UserResource } from "@clerk/types";
 import { useQuery } from "convex/react";
 import {

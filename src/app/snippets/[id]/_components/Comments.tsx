@@ -1,3 +1,4 @@
+"use client";
 import { SignInButton, useUser } from "@clerk/nextjs";
 import { useMutation, useQuery } from "convex/react";
 import { MessageSquare } from "lucide-react";
