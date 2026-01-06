@@ -1,15 +1,9 @@
 import HeaderProfileBtn from "@/app/(root)/_components/HeaderProfileBtn";
-import useMounted from "@/hooks/useMounted";
 import { SignedOut } from "@clerk/nextjs";
 import { Blocks, Code2, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 function NavigationHeader() {
-  const mounted = useMounted();
-
-  // Prevent rendering anything until the client has loaded
-  if (!mounted)
-    return <div className="size-8 rounded-full bg-gray-800 animate-pulse" />;
   return (
     <div className="sticky top-0 z-50 w-full border-b border-gray-800/50 bg-gray-950/80 backdrop-blur-xl backdrop-saturate-150">
       <div className="absolute inset-0 bg-linear-to-r from-blue-500/5 to-purple-500/5" />

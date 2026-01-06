@@ -93,7 +93,6 @@ async function Header() {
               </span>
             </Link>
           )}
-
           <SignedIn>
             <RunButton />
           </SignedIn>
