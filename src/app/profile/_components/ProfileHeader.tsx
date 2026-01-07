@@ -43,7 +43,6 @@ type Props = {
 function ProfileHeader(props: Props) {
   const { userStats, userData, user } = props;
   const starredSnippets = useQuery(api.snippets.getStarredSnippets);
-  console.log(user.imageUrl);
   const STATS = [
     {
       label: "Code Executions",

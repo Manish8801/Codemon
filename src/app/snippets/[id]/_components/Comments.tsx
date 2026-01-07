@@ -28,7 +28,6 @@ const Comments = ({ snippetId }: Props) => {
     try {
       await addComment({ snippetId, content });
     } catch (error) {
-      console.log("Error adding comment:", error);
       toast.error("Something went wrong");
     } finally {
       setIsSubmitting(false);
@@ -41,7 +40,6 @@ const Comments = ({ snippetId }: Props) => {
     try {
       await deleteComment({ commentId });
     } catch (error) {
-      console.log("Error deleting comment:", error);
       toast.error("Something went wrong");
     } finally {
       setDeletingCommentId(null);

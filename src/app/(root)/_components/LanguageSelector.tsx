@@ -12,7 +12,7 @@ type Props = {
 };
 function LanguageSelector({ hasAccess }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-const mounted = useMounted();
+  const mounted = useMounted();
   const { language, setLanguage } = useCodeEditorStore();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const currentLanguageObj = LANGUAGE_CONFIG[language];

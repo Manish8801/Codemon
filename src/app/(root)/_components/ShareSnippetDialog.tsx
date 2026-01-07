@@ -25,7 +25,6 @@ function ShareSnippetDialog({ onClose }: Props) {
       setTitle("");
       toast.success("Snippet shared successfully");
     } catch (error) {
-      console.log("Error creating snippet:", error);
       toast.error("Error creating snippet");
     } finally {
       setIsSharing(false);
