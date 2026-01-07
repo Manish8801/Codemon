@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Codemon
 
-## Getting Started
+Codemon is a high-performance, reactive SaaS platform for developers to write, execute, and share code snippets. Built with a focus on speed, security, and a premium developer experience.
 
-First, run the development server:
+## ✨ Key Features
+- **Monaco Editor Integration:** A VS Code-like editing experience in the browser.
+- **Multi-Language Support:** Execute code in 5+ languages via the Piston API.
+- **Real-time Persistence:** Instant data syncing using Convex (Reactive Backend).
+- **Secure Authentication:** User management via Clerk.
+- **Sleek UI:** Built with Tailwind CSS v4 and Framer Motion for a fluid experience.
+- **State Management:** Persistent editor settings using Zustand.
 
+## 🛠️ Tech Stack
+- **Framework:** Next.js 16 (App Router)
+- **Database/Backend:** Convex
+- **Auth:** Clerk
+- **Styling:** Tailwind CSS v4 + Lucide Icons
+- **Animation:** Motion (Framer Motion)
+- **Editor:** @monaco-editor/react
+
+
+## 🚀 Getting Started
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/Manish8801/codemon.git
+   ```
+
+2. **Install dependencies::**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Environment Variables: Create a .env file in the root directory and add your Upstash credentials:**
+```bash
+CLERK_JWT_ISSUER_DOMAIN=""
+CLERK_SECRET_KEY=""
+CLERK_WEBHOOK_SECRET=""
+CONVEX_DEPLOYMENT=""
+LEMON_SQUEEZY_WEBHOOK_SECRET=""
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=""
+NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=""
+NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=""
+NEXT_PUBLIC_CONVEX_URL=""
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. **Run the development server:**
+```bash
+pnpm run dev
+```
+5. **Open http://localhost:3000 in your browser:**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Screenshots
+![Homepage](./public/screenshots/Screenshot%202026-01-07%20103006.png)
 
-To learn more about Next.js, take a look at the following resources:
+![SnippetPage](./public/screenshots/Screenshot%202026-01-07%20103025.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Profile](./public/screenshots/Screenshot%202026-01-07%20103607.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![PricingPage](./public/screenshots/Screenshot%202026-01-07%20103825.png)
