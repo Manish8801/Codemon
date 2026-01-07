@@ -37,7 +37,7 @@ const TABS = [
 ];
 
 function ProfilePage() {
-    const mounted = useMounted();
+  const mounted = useMounted();
   const { user, isLoaded } = useUser();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"executions" | "starred">(
@@ -70,7 +70,7 @@ function ProfilePage() {
   };
 
   if (!user && isLoaded) return router.push("/");
-if (mounted) return null;
+  if (!mounted) return null;
   return (
     <div className="min-h-screen bg-[#0a0a0f]">
       <NavigationHeader />
