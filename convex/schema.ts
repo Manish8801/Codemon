@@ -26,7 +26,18 @@ export default defineSchema({
   snippets: defineTable({
     userId: v.id("users"),
     title: v.string(),
-    language: v.string(),
+    language: v.union(
+      v.literal("javascript"),
+      v.literal("typescript"),
+      v.literal("python"),
+      v.literal("java"),
+      v.literal("cpp"),
+      v.literal("csharp"),
+      v.literal("go"),
+      v.literal("rust"),
+      v.literal("swift"),
+      v.literal("ruby")
+    ),
     code: v.string(),
     userName: v.string(),
   }).index("by_user_id", ["userId"]),

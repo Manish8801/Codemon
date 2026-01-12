@@ -12,7 +12,6 @@ import { Id } from "../../../../convex/_generated/dataModel";
 import Comments from "./_components/Comments";
 import CopyButton from "./_components/CopyButton";
 import SnippetLoadingSkeleton from "./_components/SnippetLoadingSkeleton";
-import { LanguageId } from "@/types";
 
 export default function SnippetDetailPage() {
   const snippetId = useParams().id;
@@ -84,7 +83,7 @@ export default function SnippetDetailPage() {
             </div>
             <Editor
               height="600px"
-              language={LANGUAGE_CONFIGS[(snippet.language as LanguageId)].monacoLanguage}
+              language={LANGUAGE_CONFIGS[snippet.language].monacoLanguage}
               value={snippet.code}
               theme="vs-dark"
               beforeMount={defineMonacoThemes}
