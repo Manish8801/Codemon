@@ -1,11 +1,13 @@
 "use client";
 
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
 import useMounted from "@/hooks/useMounted";
+import { cn } from "@/lib/utils";
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import { useClerk } from "@clerk/nextjs";
 import { Editor } from "@monaco-editor/react";
 import { RotateCcwIcon, TypeIcon } from "lucide-react";
-import { motion } from "motion/react";
 import Image from "next/image";
 import { useEffect } from "react";
 import { defineMonacoThemes, LANGUAGE_CONFIGS } from "../_constants";
@@ -71,34 +73,30 @@ const EditorPanel = () => {
           </div>
           <div className="flex items-center gap-3">
             {/* Font Size Slider */}
-            <div className="flex items-center gap-3 px-3 py-2 bg-[#1e1e2e] rounded-lg ring-1 ring-white/5">
+            <div className={cn(buttonVariants())}>
               <TypeIcon className="size-4 text-gray-400" />
               <div className="flex items-center gap-3">
-                <input
-                  type="range"
-                  min="12"
-                  max="24"
-                  value={fontSize}
-                  onChange={(e) =>
-                    handleFontSizeChange(parseInt(e.target.value))
-                  }
-                  className="w-20 h-1 bg-gray-600 rounded-lg cursor-pointer"
+                <Slider
+                  onValueChange={(value) => handleFontSizeChange(value[0])}
+                  value={[fontSize]}
+                  min={12}
+                  max={24}
+                  className="w-20"
                 />
+
                 <span className="text-sm font-medium text-gray-400 min-w-8 text-center">
                   {fontSize}
                 </span>
               </div>
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+            <Button
               onClick={handleRefresh}
-              className="p-2 bg-[#1e1e2e] hover:bg-[#2a2a3a] rounded-lg ring-1 ring-white/5 transition-colors"
+              className="p-2 transition-colors"
               aria-label="Reset to default code"
             >
               <RotateCcwIcon className="size-4 text-gray-400" />
-            </motion.button>
+            </Button>
 
             {/* Share Button */}
             <ShareSnippetDialog />
@@ -142,7 +140,6 @@ const EditorPanel = () => {
           {!clerk.loaded && <EditorPanelSkeleton />}
         </div>
       </div>
-    
     </div>
   );
 };
