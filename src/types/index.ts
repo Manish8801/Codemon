@@ -1,12 +1,7 @@
 import { Id } from "../../convex/_generated/dataModel";
-import { LANGUAGE_CONFIGS, THEME_DEFINITIONS, THEMES } from "../app/(root)/_constants/index";
+import { LANGUAGE_CONFIGS, THEMES } from '../app/(root)/_constants/index';
 
-export type Theme = (typeof THEMES)[number]; // for theme dropdown
-
-// for Monaco editor
-export type ThemeNames = keyof typeof THEME_DEFINITIONS;
-export type ThemeDefinition = typeof THEME_DEFINITIONS[ThemeNames];
-
+export type ThemeName = typeof THEMES[number]["id"];
 export type LanguageName = keyof typeof LANGUAGE_CONFIGS;
 export type LanguageConfig = typeof LANGUAGE_CONFIGS[LanguageName];
 export type LanguageRuntime = LanguageConfig["pistonRuntime"];
