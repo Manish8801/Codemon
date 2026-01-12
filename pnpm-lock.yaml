@@ -14,6 +14,9 @@ importers:
       '@clerk/types':
         specifier: ^4.101.9
         version: 4.101.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@devicon/react':
+        specifier: ^0.0.3
+        version: 0.0.3
       '@monaco-editor/react':
         specifier: ^4.7.0
         version: 4.7.0(monaco-editor@0.55.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -44,6 +47,9 @@ importers:
       react:
         specifier: 19.2.3
         version: 19.2.3
+      react-devicons:
+        specifier: ^2.16.2
+        version: 2.16.2
       react-dom:
         specifier: 19.2.3
         version: 19.2.3(react@19.2.3)
@@ -211,6 +217,9 @@ packages:
   '@clerk/types@4.101.9':
     resolution: {integrity: sha512-RO00JqqmkIoI1o0XCtvudjaLpqEoe8PRDHlLS1r/aNZazUQCO0TT6nZOx1F3X+QJDjqYVY7YmYl3mtO2QVEk1g==}
     engines: {node: '>=18.17.0'}
+
+  '@devicon/react@0.0.3':
+    resolution: {integrity: sha512-r8Td7z0hyC8Y1PSgZs9NBGDcEosmFjSLWlhbez/8nOR+5HNXFpaFryc7OkKk6F2J+WXEpyxKx81CjXcCW3qO7A==}
 
   '@emnapi/core@1.7.1':
     resolution: {integrity: sha512-o1uhUASyo921r2XtHYOHy7gdkGLge8ghBEQHMWmyJFoXlpU58kIrhhN3w26lpQb6dspetweapMn2CSNwQ8I4wg==}
@@ -2364,6 +2373,9 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
+  react-devicons@2.16.2:
+    resolution: {integrity: sha512-oVNx7pRIW5UfvSZGlvUICvBL54DfL/rGJWyf/5qJFCG9Cd4zzul0yYE0cKJASvQDPzjARhOq07No9SoQlURrFA==}
+
   react-dom@19.2.3:
     resolution: {integrity: sha512-yELu4WmLPw5Mr/lmeEpox5rw3RETacE++JgHqQzd2dg+YbJuat3jH4ingc+WPZhxaoFzdv9y33G+F7Nl5O0GBg==}
     peerDependencies:
@@ -2419,6 +2431,10 @@ packages:
     engines: {node: '>= 16.20.2'}
     peerDependencies:
       react: '>= 0.14.0'
+
+  react@18.3.1:
+    resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
+    engines: {node: '>=0.10.0'}
 
   react@19.2.3:
     resolution: {integrity: sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==}
@@ -2934,6 +2950,8 @@ snapshots:
     transitivePeerDependencies:
       - react
       - react-dom
+
+  '@devicon/react@0.0.3': {}
 
   '@emnapi/core@1.7.1':
     dependencies:
@@ -5062,6 +5080,10 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
+  react-devicons@2.16.2:
+    dependencies:
+      react: 18.3.1
+
   react-dom@19.2.3(react@19.2.3):
     dependencies:
       react: 19.2.3
@@ -5116,6 +5138,10 @@ snapshots:
       prismjs: 1.30.0
       react: 19.2.3
       refractor: 5.0.0
+
+  react@18.3.1:
+    dependencies:
+      loose-envify: 1.4.0
 
   react@19.2.3: {}
 
