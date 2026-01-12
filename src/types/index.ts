@@ -1,9 +1,9 @@
 import { Id } from "../../convex/_generated/dataModel";
-import { LANGUAGE_CONFIGS, THEMES } from '../app/(root)/_constants/index';
+import { LANGUAGE_CONFIGS, THEMES } from "../app/(root)/_constants/index";
 
-export type ThemeName = typeof THEMES[number]["id"];
-export type LanguageName = keyof typeof LANGUAGE_CONFIGS;
-export type LanguageConfig = typeof LANGUAGE_CONFIGS[LanguageName];
+export type ThemeId = (typeof THEMES)[number]["id"];
+export type LanguageId = keyof typeof LANGUAGE_CONFIGS;
+export type LanguageConfig = (typeof LANGUAGE_CONFIGS)[LanguageId];
 export type LanguageRuntime = LanguageConfig["pistonRuntime"];
 
 export interface ExecuteCodeResponse {

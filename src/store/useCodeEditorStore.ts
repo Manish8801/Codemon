@@ -1,17 +1,17 @@
 import { LANGUAGE_CONFIGS } from "@/app/(root)/_constants";
-import { ExecutionResult, LanguageName, ThemeName } from "@/types";
+import { ExecutionResult, LanguageId, ThemeId } from "@/types";
 import { type Monaco } from "@monaco-editor/react";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 type StoreState = {
-  language: LanguageName;
+  language: LanguageId;
   output: string;
   isRunning: boolean;
   error: string | null;
   fontSize: number;
   editor: Monaco | null;
-  theme: ThemeName;
+  theme: ThemeId;
   executionResult: ExecutionResult | null;
 };
 type StoreActions = {
@@ -26,9 +26,9 @@ type StoreActions = {
 type Store = StoreState & StoreActions;
 
 const DEFAULT_STATE = {
-  language: "javascript" as LanguageName,
+  language: "javascript" as LanguageId,
   fontSize: 16,
-  theme: "vs-dark" as ThemeName,
+  theme: "vs-dark" as ThemeId,
 };
 
 export const useCodeEditorStore = create<Store>()(
