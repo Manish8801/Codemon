@@ -1,24 +1,15 @@
 import { Id } from "../../convex/_generated/dataModel";
+import { LANGUAGE_CONFIGS, THEME_DEFINITIONS, THEMES } from "../app/(root)/_constants/index";
 
-export interface Theme {
-  id: string;
-  label: string;
-  color: string;
-}
+export type Theme = (typeof THEMES)[number]; // for theme dropdown
 
-export interface Language {
-  id: string;
-  label: string;
-  logoPath: string;
-  monacoLanguage: string;
-  defaultCode: string;
-  pistonRuntime: LanguageRuntime;
-}
+// for Monaco editor
+export type ThemeNames = keyof typeof THEME_DEFINITIONS;
+export type ThemeDefinition = typeof THEME_DEFINITIONS[ThemeNames];
 
-export interface LanguageRuntime {
-  language: string;
-  version: string;
-}
+export type LanguageName = keyof typeof LANGUAGE_CONFIGS;
+export type LanguageConfig = typeof LANGUAGE_CONFIGS[LanguageName];
+export type LanguageRuntime = LanguageConfig["pistonRuntime"];
 
 export interface ExecuteCodeResponse {
   compile?: {
@@ -35,8 +26,6 @@ export interface ExecutionResult {
   output: string;
   error: string | null;
 }
-
-
 
 export interface Snippet {
   _id: Id<"snippets">;

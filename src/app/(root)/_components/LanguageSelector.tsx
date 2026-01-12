@@ -5,7 +5,7 @@ import { ChevronDownIcon, Lock, Sparkles } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { LANGUAGE_CONFIG } from "../_constants";
+import { LANGUAGE_CONFIGS } from "../_constants";
 
 type Props = {
   hasAccess: boolean;
@@ -15,7 +15,7 @@ function LanguageSelector({ hasAccess }: Props) {
   const mounted = useMounted();
   const { language, setLanguage } = useCodeEditorStore();
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const currentLanguageObj = LANGUAGE_CONFIG[language];
+  const currentLanguageObj = LANGUAGE_CONFIGS[language];
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -98,7 +98,7 @@ function LanguageSelector({ hasAccess }: Props) {
             </div>
 
             <div className="max-h-70 overflow-y-auto overflow-x-hidden">
-              {Object.values(LANGUAGE_CONFIG).map((lang, index) => {
+              {Object.values(LANGUAGE_CONFIGS).map((lang, index) => {
                 const isLocked = !hasAccess && lang.id !== "javascript";
 
                 return (

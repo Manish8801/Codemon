@@ -8,7 +8,7 @@ import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
+import { defineMonacoThemes, LANGUAGE_CONFIGS } from "../_constants";
 import { EditorPanelSkeleton } from "./EditorPanelSkeleton";
 import ShareSnippetDialog from "./ShareSnippetDialog";
 
@@ -22,7 +22,7 @@ const EditorPanel = () => {
   useEffect(() => {
     const savedCode = localStorage.getItem(`editor-code-${language}`);
 
-    const newCode = savedCode || LANGUAGE_CONFIG[language].defaultCode;
+    const newCode = savedCode || LANGUAGE_CONFIGS[language].defaultCode;
 
     if (editor) {
       editor.setValue(newCode);
@@ -35,20 +35,17 @@ const EditorPanel = () => {
   }, [setFontSize, language]);
 
   const handleRefresh = () => {
-     const defaultCode = LANGUAGE_CONFIG[language].defaultCode;
-     if (editor) editor.setValue(defaultCode);
-     localStorage.removeItem(`editor-code-${language}`);
-
+    const defaultCode = LANGUAGE_CONFIGS[language].defaultCode;
+    if (editor) editor.setValue(defaultCode);
+    localStorage.removeItem(`editor-code-${language}`);
   };
-  const handleEditorChange = (value : string | undefined) => {
-     if (value) localStorage.setItem(`editor-code-${language}`, value);
-
+  const handleEditorChange = (value: string | undefined) => {
+    if (value) localStorage.setItem(`editor-code-${language}`, value);
   };
   const handleFontSizeChange = (newFontSize: number) => {
     const size = Math.min(Math.max(newFontSize, 12), 24);
     setFontSize(size);
     localStorage.setItem("editor-font-size", size.toString());
-
   };
   if (!mounted) return null;
 
@@ -123,7 +120,7 @@ const EditorPanel = () => {
           {clerk.loaded && (
             <Editor
               height="600px"
-              language={LANGUAGE_CONFIG[language].monacoLanguage}
+              language={LANGUAGE_CONFIGS[language].monacoLanguage}
               onChange={handleEditorChange}
               theme={theme}
               beforeMount={defineMonacoThemes}

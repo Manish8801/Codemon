@@ -1,6 +1,6 @@
 "use client";
 
-import { defineMonacoThemes, LANGUAGE_CONFIG } from "@/app/(root)/_constants";
+import { defineMonacoThemes, LANGUAGE_CONFIGS } from "@/app/(root)/_constants";
 import NavigationHeader from "@/components/NavigationHeader";
 import { Editor } from "@monaco-editor/react";
 import { useQuery } from "convex/react";
@@ -38,9 +38,9 @@ export default function SnippetDetailPage() {
                 <div className="flex items-center justify-center size-12 rounded-xl bg-[#ffffff08] p-2.5">
                   <Image
                     src={`/${snippet.language}.png`}
-                                      alt={ `${snippet.language} logo` }
-                                      height={ 24}
-                                      width={24}
+                    alt={`${snippet.language} logo`}
+                    height={24}
+                    width={24}
                     className="object-contain"
                   />
                 </div>
@@ -83,7 +83,7 @@ export default function SnippetDetailPage() {
             </div>
             <Editor
               height="600px"
-              language={LANGUAGE_CONFIG[snippet.language].monacoLanguage}
+              language={LANGUAGE_CONFIGS[snippet.language].monacoLanguage}
               value={snippet.code}
               theme="vs-dark"
               beforeMount={defineMonacoThemes}
@@ -107,4 +107,3 @@ export default function SnippetDetailPage() {
     </div>
   );
 }
-

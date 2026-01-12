@@ -1,4 +1,4 @@
-import { LANGUAGE_CONFIG } from "@/app/(root)/_constants";
+import { LANGUAGE_CONFIGS } from "@/app/(root)/_constants";
 import { ExecutionResult } from "@/types";
 import { type Monaco } from "@monaco-editor/react";
 import { create } from "zustand";
@@ -85,7 +85,7 @@ export const useCodeEditorStore = create<Store>((set, get) => {
       set({ isRunning: true, error: null });
 
       try {
-        const runtime = LANGUAGE_CONFIG[language].pistonRuntime;
+        const runtime = LANGUAGE_CONFIGS[language].pistonRuntime;
         const response = await fetch("https://emkc.org/api/v2/piston/execute", {
           method: "POST",
           headers: {
@@ -155,7 +155,6 @@ export const useCodeEditorStore = create<Store>((set, get) => {
   };
 });
 
-
 export const getExecutionResult = () => {
   return useCodeEditorStore.getState().executionResult;
-}
+};
