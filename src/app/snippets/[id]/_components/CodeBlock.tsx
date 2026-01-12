@@ -14,7 +14,7 @@ const CodeBlock = (props: Props) => {
     .join("\n"); // join back into a single string
 
   return (
-    <div className="my-4 bg-[#0a0a0f] rounded-lg overflow-hidden border border-[#ffffff0a]">
+    <div className="my-4 bg-[#0a0a0f] -lg overflow-hidden border border-[#ffffff0a]">
       {/* header bar showing language and copy button */}
       <div className="flex items-center justify-between px-4 py-2 bg-[#ffffff08]">
         {/* language indicator with icon */}

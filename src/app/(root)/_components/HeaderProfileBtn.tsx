@@ -2,12 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import useMounted from "@/hooks/useMounted";
-import { SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedOut, SignInButton, useClerk, UserButton } from "@clerk/nextjs";
 import { User } from "lucide-react";
 
 function HeaderProfileBtn() {
   const mounted = useMounted();
-
   if (!mounted)
     return <div className="size-8 rounded-full bg-gray-800 animate-pulse" />;
   return (
@@ -24,7 +23,7 @@ function HeaderProfileBtn() {
 
       <SignedOut>
         <SignInButton >
-          <Button>Sign In</Button>
+          <Button >Sign In</Button>
         </SignInButton>
       </SignedOut>
     </>

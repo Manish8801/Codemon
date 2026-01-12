@@ -9,13 +9,14 @@ import { useClerk } from "@clerk/nextjs";
 import { Editor } from "@monaco-editor/react";
 import { RotateCcwIcon, TypeIcon } from "lucide-react";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Panel, PanelSize } from "react-resizable-panels";
 import { defineMonacoThemes, LANGUAGE_CONFIGS } from "../_constants";
 import { EditorPanelSkeleton } from "./EditorPanelSkeleton";
-import ShareSnippetDialog from "./NewShareSnippetDialog";
+import ShareSnippetDialog from "./ShareSnippetDialog";
 
 const EditorPanel = () => {
-  const clerk = useClerk();
+const [panelSize, setPanelSize] = useState<PanelSize>();  const clerk = useClerk();
   const mounted = useMounted();
   const { language, theme, fontSize, editor, setFontSize, setEditor } =
     useCodeEditorStore();
@@ -44,17 +45,15 @@ const EditorPanel = () => {
     if (value) localStorage.setItem(`editor-code-${language}`, value);
   };
   const handleFontSizeChange = (newFontSize: number) => {
-    const size = Math.min(Math.max(newFontSize, 12), 24);
-    setFontSize(size);
-    localStorage.setItem("editor-font-size", size.toString());
+    setFontSize(newFontSize);
   };
   if (!mounted) return null;
 
   return (
-    <div className="relative">
-      <div className="relative bg-[#12121a]/90 backdrop-blur rounded-xl border border-white/5 p-6">
+    <Panel collapsible defaultSize={ 50 } onResize={ size => { setPanelSize(size)}}>
+      <div className="w-full relative bg-[#12121a]/90 backdrop-blur  border border-white/5 p-4">
         {/* Header */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="h-full w-full flex items-center justify-between mb-2">
           <div className="flex items-center gap-3">
             <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#1e1e2e] ring-1 ring-white/5">
               <Image
@@ -66,9 +65,10 @@ const EditorPanel = () => {
             </div>
             <div>
               <h2 className="text-sm font-medium text-white">Code Editor</h2>
-              <p className="text-xs text-gray-500">
+              { panelSize && panelSize.inPixels > 550 && 
+                <span className="text-xs text-gray-500">
                 Write and execute your code
-              </p>
+              </span>}
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -81,6 +81,7 @@ const EditorPanel = () => {
                   value={[fontSize]}
                   min={12}
                   max={24}
+                  step={1}
                   className="w-20"
                 />
 
@@ -104,7 +105,7 @@ const EditorPanel = () => {
         </div>
 
         {/* Editor  */}
-        <div className="relative group rounded-xl overflow-hidden ring-1 ring-white/5">
+        <div className="relative group  ring-1 ring-white/5">
           {clerk.loaded && (
             <Editor
               height="600px"
@@ -140,7 +141,7 @@ const EditorPanel = () => {
           {!clerk.loaded && <EditorPanelSkeleton />}
         </div>
       </div>
-    </div>
+    </Panel>
   );
 };
 

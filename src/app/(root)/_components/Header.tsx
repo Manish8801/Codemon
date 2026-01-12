@@ -25,7 +25,7 @@ async function Header() {
     <div className="relative z-10">
       <div
         className="flex items-center lg:justify-between justify-center 
-        bg-[#0a0a0f]/80 backdrop-blur-xl p-6 mb-4 rounded-lg"
+        bg-[#0a0a0f]/80 backdrop-blur-xl p-6 mb-4 "
       >
         <div className="hidden lg:flex items-center gap-8">
           <Link href="/" className="flex items-center gap-3 group relative">
@@ -37,7 +37,7 @@ async function Header() {
 
             {/* Logo */}
             <div
-              className="relative bg-linear-to-br from-[#1a1a2e] to-[#0a0a0f] p-2 rounded-xl ring-1
+              className="relative bg-linear-to-br from-[#1a1a2e] to-[#0a0a0f] p-2  ring-1
               ring-white/10 group-hover:ring-white/20 transition-all"
             >
               <Blocks className="size-6 text-blue-400 transform -rotate-6 group-hover:rotate-0 transition-transform duration-500" />
@@ -55,20 +55,9 @@ async function Header() {
 
           {/* Navigation */}
           <nav className="flex items-center space-x-1">
-            <Link
-              href="/snippets"
-              className="relative group flex items-center gap-2 px-4 py-1.5 rounded-lg text-gray-300 bg-gray-800/50 
-                hover:bg-blue-500/10 border border-gray-800 hover:border-blue-500/50 transition-all duration-300 shadow-lg overflow-hidden"
-            >
-              <div
-                className="absolute inset-0 bg-linear-to-r from-blue-500/10 
-                to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity"
-              />
+            <Link href="/snippets" className={cn(buttonVariants(), "flex")}>
               <Code2 className="w-4 h-4 relative z-10 group-hover:rotate-3 transition-transform" />
-              <span
-                className="text-sm font-medium relative z-10 group-hover:text-white
-                 transition-colors"
-              >
+              <span className="text-sm font-medium relative z-10 group-hover:text-white transition-colors">
                 Snippets
               </span>
             </Link>

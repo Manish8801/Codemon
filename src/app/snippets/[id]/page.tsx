@@ -32,10 +32,10 @@ export default function SnippetDetailPage() {
       <main className="max-w-360 mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
         <div className="max-w-300 mx-auto">
           {/* Header */}
-          <div className="bg-[#121218] border border-[#ffffff0a] rounded-2xl p-6 sm:p-8 mb-6 backdrop-blur-xl">
+          <div className="bg-[#121218] border border-[#ffffff0a] -2xl p-6 sm:p-8 mb-6 backdrop-blur-xl">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-4">
-                <div className="flex items-center justify-center size-12 rounded-xl bg-[#ffffff08] p-2.5">
+                <div className="flex items-center justify-center size-12 -xl bg-[#ffffff08] p-2.5">
                   <Image
                     src={`/${snippet.language}.png`}
                     alt={`${snippet.language} logo`}
@@ -66,14 +66,14 @@ export default function SnippetDetailPage() {
                   </div>
                 </div>
               </div>
-              <div className="inline-flex items-center px-3 py-1.5 bg-[#ffffff08] text-[#808086] rounded-lg text-sm font-medium">
+              <div className="inline-flex items-center px-3 py-1.5 bg-[#ffffff08] text-[#808086] -lg text-sm font-medium">
                 {snippet.language}
               </div>
             </div>
           </div>
 
           {/* Code Editor */}
-          <div className="mb-8 rounded-2xl overflow-hidden border border-[#ffffff0a] bg-[#121218]">
+          <div className="mb-8 -2xl overflow-hidden border border-[#ffffff0a] bg-[#121218]">
             <div className="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-[#ffffff0a]">
               <div className="flex items-center gap-2 text-[#808086]">
                 <Code className="w-4 h-4" />
