@@ -51,9 +51,9 @@ pnpm run dev
 
 
 ## Screenshots
-![Homepage](./public/screenshots/Screenshot%2026-01-12%202056.png)
+![Homepage](./public/screenshots/Screenshot%202026-01-12%20202056.png)
 
-![SnippetPage](./public/screenshots/Screenshot%2026-01-12%202210.png.png)
+![SnippetPage](./public/screenshots/Screenshot%2026-01-12%202210.png)
 
 ![Profile](./public/screenshots/Screenshot%202026-01-07%20103607.png)
 
