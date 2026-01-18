@@ -8,9 +8,9 @@ import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 
 const NavigationHeader = () => {
-  const mounted = useMounted()
+  const mounted = useMounted();
 
-  if (!mounted) return null
+  if (!mounted) return null;
 
   return (
     <div className="sticky top-0 z-50 w-full border-b border-gray-800/50 bg-gray-950/80 backdrop-blur-xl backdrop-saturate-150">
@@ -77,6 +77,6 @@ const NavigationHeader = () => {
       </div>
     </div>
   );
-}
+};
 
 export default NavigationHeader;

@@ -2,7 +2,7 @@ import { Terminal } from "lucide-react";
 
 export function EditorPanelSkeleton() {
   return (
-    <div className="relative">
+    <div className="relative ">
       <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-purple-500/5 rounded-xl blur-2xl" />
       <div className="relative bg-[#12121a]/90 backdrop-blur rounded-xl border border-white/5 p-6 h-150">
         {/* Editor Area Skeleton */}

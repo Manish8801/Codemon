@@ -14,9 +14,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import { useMutation } from "convex/react";
+import { LucideShare } from "lucide-react";
 import { ChangeEvent, useState } from "react";
 import toast from "react-hot-toast";
-import { FaShare } from "react-icons/fa";
 import { api } from "../../../../convex/_generated/api";
 
 const ShareSnippetDialog = () => {
@@ -50,7 +50,7 @@ const ShareSnippetDialog = () => {
             className="bg-linear-to-r
                from-blue-500 to-blue-600 opacity-90 hover:opacity-100 transition-opacity"
           >
-            <FaShare />
+            <LucideShare />
             Share
           </Button>
         </DialogTrigger>

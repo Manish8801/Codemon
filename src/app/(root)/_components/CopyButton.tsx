@@ -2,8 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
+import { LucideCopy, LucideCopyCheck } from "lucide-react";
 import { useState } from "react";
-import { FaCheckCircle, FaCopy } from "react-icons/fa";
 
 const CopyButton = () => {
   const [isCopied, setIsCopied] = useState(false);
@@ -19,12 +19,12 @@ const CopyButton = () => {
         <Button className="cursor-pointer" onClick={handleCopy}>
           {isCopied ? (
             <>
-              <FaCheckCircle className="w-3.5 h-3.5" />
+              <LucideCopyCheck className="w-3.5 h-3.5" />
               Copied!
             </>
           ) : (
             <>
-              <FaCopy className="w-3.5 h-3.5" />
+              <LucideCopy className="w-3.5 h-3.5" />
               Copy
             </>
           )}

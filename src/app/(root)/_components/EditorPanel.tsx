@@ -2,22 +2,25 @@
 
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import useMounted from "@/hooks/useMounted";
 import { cn } from "@/lib/utils";
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import { useClerk } from "@clerk/nextjs";
-import { Editor } from "@monaco-editor/react";
 import { RotateCcwIcon, TypeIcon } from "lucide-react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Panel, PanelSize } from "react-resizable-panels";
 import { defineMonacoThemes, LANGUAGE_CONFIGS } from "../_constants";
-import { EditorPanelSkeleton } from "./EditorPanelSkeleton";
+import { EditorViewSkeleton } from "./EditorPanelSkeleton";
 import ShareSnippetDialog from "./ShareSnippetDialog";
 
+const Editor = dynamic(
+  () => import("@monaco-editor/react").then((m) => m.Editor),
+  { loading: () => <EditorViewSkeleton />, ssr: false },
+);
 const EditorPanel = () => {
-const [panelSize, setPanelSize] = useState<PanelSize>();  const clerk = useClerk();
-  const mounted = useMounted();
+  const [panelSize, setPanelSize] = useState<PanelSize>();
+  const clerk = useClerk();
   const { language, theme, fontSize, editor, setFontSize, setEditor } =
     useCodeEditorStore();
 
@@ -47,10 +50,15 @@ const [panelSize, setPanelSize] = useState<PanelSize>();  const clerk = useClerk
   const handleFontSizeChange = (newFontSize: number) => {
     setFontSize(newFontSize);
   };
-  if (!mounted) return null;
 
   return (
-    <Panel collapsible defaultSize={ 50 } onResize={ size => { setPanelSize(size)}}>
+    <Panel
+      collapsible
+      defaultSize={50}
+      onResize={(size) => {
+        setPanelSize(size);
+      }}
+    >
       <div className="w-full relative bg-[#12121a]/90 backdrop-blur  border border-white/5 p-4">
         {/* Header */}
         <div className="h-full w-full flex items-center justify-between mb-2">
@@ -65,10 +73,11 @@ const [panelSize, setPanelSize] = useState<PanelSize>();  const clerk = useClerk
             </div>
             <div>
               <h2 className="text-sm font-medium text-white">Code Editor</h2>
-              { panelSize && panelSize.inPixels > 550 && 
+              {panelSize && panelSize.inPixels > 550 && (
                 <span className="text-xs text-gray-500">
-                Write and execute your code
-              </span>}
+                  Write and execute your code
+                </span>
+              )}
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -137,8 +146,6 @@ const [panelSize, setPanelSize] = useState<PanelSize>();  const clerk = useClerk
               }}
             />
           )}
-
-          {!clerk.loaded && <EditorPanelSkeleton />}
         </div>
       </div>
     </Panel>

@@ -12,7 +12,7 @@ import { LanguageIcon } from "@/constants/icons";
 import { cn } from "@/lib/utils";
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import { LanguageId } from "@/types";
-import { FaLock } from "react-icons/fa";
+import { LucideLock } from "lucide-react";
 import { LANGUAGE_CONFIGS } from "../_constants";
 
 type Props = {
@@ -55,7 +55,7 @@ const LanguageSelector = ({ hasAccess }: Props) => {
                       {
                         "rounded-sm border-2 border-gray-600":
                           currentLanguageObj?.id === id,
-                      }
+                      },
                     )}
                     disabled={isLocked}
                     onClick={() => handleClick(id)}
@@ -65,7 +65,9 @@ const LanguageSelector = ({ hasAccess }: Props) => {
 
                       <span>{label}</span>
                     </div>
-                    {isLocked && <FaLock className="size-3 text-gray-500" />}
+                    {isLocked && (
+                      <LucideLock className="size-3 text-gray-500" />
+                    )}
                   </Button>
                 </DropdownMenuItem>
               );

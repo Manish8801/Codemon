@@ -1,23 +1,18 @@
-import { cn } from "@/lib/utils";
-
 import { LanguageId, ThemeId } from "@/types";
-import { FunctionComponent } from "react";
+import { FunctionComponent, JSX } from "react";
+import CplusplusOriginal from "react-devicons/cplusplus/original";
+import CsharpOriginal from "react-devicons/csharp/original";
 import GoOriginal from "react-devicons/go/original";
 import JavaOriginal from "react-devicons/java/original";
 import JavascriptOriginal from "react-devicons/javascript/original";
 import PythonOriginal from "react-devicons/python/original";
-
-import TypescriptOriginal from "react-devicons/typescript/original";
-
-import CplusplusOriginal from "react-devicons/cplusplus/original";
-import CsharpOriginal from "react-devicons/csharp/original";
 import RustOriginal from "react-devicons/rust/original";
 import SwiftOriginal from "react-devicons/swift/original";
+import TypescriptOriginal from "react-devicons/typescript/original";
 
 import RubyOriginal from "react-devicons/ruby/original";
 
-import { FaCloud, FaGithub, FaLaptop, FaMoon, FaSun } from "react-icons/fa";
-import { IconType } from "react-icons/lib";
+import { Cloud, Github, Laptop, Moon, Sun } from "lucide-react";
 
 const LANGUAGE_ICONS: Record<
   LanguageId,
@@ -35,12 +30,12 @@ const LANGUAGE_ICONS: Record<
   ruby: RubyOriginal,
 };
 
-const THEME_ICONS: Record<ThemeId, IconType> = {
-  "github-dark": FaGithub,
-  monokai: FaLaptop,
-  "solarized-dark": FaCloud,
-  "vs-dark": FaMoon,
-  "vs-light": FaSun,
+const THEME_ICONS: Record<ThemeId, JSX.Element> = {
+  "github-dark": <Github />,
+  monokai: <Laptop />,
+  "solarized-dark": <Cloud />,
+  "vs-dark": <Moon />,
+  "vs-light": <Sun />,
 };
 
 export const LanguageIcon = (languageId: LanguageId, size?: string) => {
@@ -48,7 +43,6 @@ export const LanguageIcon = (languageId: LanguageId, size?: string) => {
   return <Icon size={size || "2rem"} />;
 };
 
-export const ThemeIcon = (themeId: ThemeId, classname?: string) => {
-  const Icon = THEME_ICONS[themeId];
-  return <Icon className={cn("size-4 ", classname)} />;
+export const ThemeIcon = (themeId: ThemeId) => {
+  return THEME_ICONS[themeId];
 };

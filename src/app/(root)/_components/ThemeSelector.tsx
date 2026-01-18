@@ -11,7 +11,7 @@ import { ThemeIcon } from "@/constants/icons";
 import { cn } from "@/lib/utils";
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import { ThemeId } from "@/types";
-import { FaPalette } from "react-icons/fa";
+import { Palette } from "lucide-react";
 import { THEMES } from "../_constants";
 
 const ThemeSelector = () => {
@@ -27,7 +27,7 @@ const ThemeSelector = () => {
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
           <Button>
-            <FaPalette className="size-4" />
+            <Palette className="size-4" />
             {currentTheme.label}
             <div
               style={{ backgroundColor: currentTheme.color }}
@@ -45,7 +45,7 @@ const ThemeSelector = () => {
                     {
                       "rounded-sm border-2 border-gray-600":
                         currentTheme.id === id,
-                    }
+                    },
                   )}
                   onClick={() => handleThemeSelect(id)}
                 >
