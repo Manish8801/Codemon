@@ -23,6 +23,7 @@ Codemon is a high-performance, reactive SaaS platform for developers to write, e
 1. **Clone the repo:**
 ```bash
 git clone https://github.com/Manish8801/codemon.git
+cd codemon
  ```
 
 2. **Install dependencies::**
