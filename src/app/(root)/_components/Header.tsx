@@ -1,6 +1,6 @@
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { SignedIn } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import { ConvexHttpClient } from "convex/browser";
 import { Blocks, Code2, Sparkles } from "lucide-react";
@@ -13,7 +13,7 @@ import ThemeSelector from "./ThemeSelector";
 
 async function Header() {
   const convex = new ConvexHttpClient(
-    process.env.NEXT_PUBLIC_CONVEX_URL as string
+    process.env.NEXT_PUBLIC_CONVEX_URL as string,
   );
   const user = await currentUser();
 
@@ -22,77 +22,125 @@ async function Header() {
   });
 
   return (
-    <div className="relative z-10">
+    <div className="relative z-20">
       <div
-        className="flex items-center lg:justify-between justify-center 
-        bg-[#0a0a0f]/80 backdrop-blur-xl p-6 mb-4 "
+        className="flex items-center justify-between
+    bg-[#0e0f14] border border-white/5
+    px-8 py-4 mb-6
+    rounded-xl
+    shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
       >
-        <div className="hidden lg:flex items-center gap-8">
-          <Link href="/" className="flex items-center gap-3 group relative">
-            {/* Logo hover effect */}
+        {/* LEFT SIDE */}
+        <div className="hidden lg:flex items-center gap-10">
+          <Link href="/" className="flex items-center gap-4 group">
+            {/* Logo Container */}
             <div
-              className="absolute -inset-2 bg-linear-to-r from-blue-500/20 to-purple-500/20 rounded-lg opacity-0 
-                group-hover:opacity-100 transition-all duration-500 blur-xl"
-            />
-
-            {/* Logo */}
-            <div
-              className="relative bg-linear-to-br from-[#1a1a2e] to-[#0a0a0f] p-2  ring-1
-              ring-white/10 group-hover:ring-white/20 transition-all"
+              className="flex items-center justify-center
+          size-10 rounded-lg
+          bg-linear-to-br from-blue-500/10 to-purple-500/10
+          border border-white/10
+          group-hover:border-white/20
+          transition-all duration-300"
             >
-              <Blocks className="size-6 text-blue-400 transform -rotate-6 group-hover:rotate-0 transition-transform duration-500" />
+              <Blocks className="size-5 text-blue-400 transition-transform duration-300 group-hover:rotate-6" />
             </div>
 
-            <div className="flex flex-col">
-              <span className="block text-lg font-semibold bg-linear-to-r from-blue-400 via-blue-300 to-purple-400 text-transparent bg-clip-text">
+            <div className="flex flex-col leading-tight">
+              <span className="text-base font-semibold tracking-wide text-white">
                 CODEMON
               </span>
-              <span className="block text-xs text-blue-400/60 font-medium">
+              <span className="text-[11px] text-gray-400 font-medium tracking-wide">
                 Interactive Code Editor
               </span>
             </div>
           </Link>
 
           {/* Navigation */}
-          <nav className="flex items-center space-x-1">
-            <Link href="/snippets" className={cn(buttonVariants(), "flex")}>
-              <Code2 className="w-4 h-4 relative z-10 group-hover:rotate-3 transition-transform" />
-              <span className="text-sm font-medium relative z-10 group-hover:text-white transition-colors">
-                Snippets
-              </span>
+          <nav className="flex items-center gap-2">
+            <Link
+              href="/snippets"
+              className={cn(
+                buttonVariants({ variant: "ghost" }),
+                "flex items-center gap-2 px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-all",
+              )}
+            >
+              <Code2 className="w-4 h-4" />
+              <span className="text-sm font-medium">Snippets</span>
             </Link>
           </nav>
         </div>
 
-        <div className="flex items-center gap-4">
+        {/* RIGHT SIDE */}
+        <div className="flex items-center gap-5">
           <div className="flex items-center gap-3">
             <ThemeSelector />
             <LanguageSelector hasAccess={!!convexUser?.isPro} />
           </div>
-
           {!convexUser?.isPro && (
             <Link
               href="/pricing"
-              className={cn(
-                buttonVariants({
-                  variant: "default",
-                }),
-                "flex items-center gap-2 px-4 py-1.5 rounded-lg border border-amber-500/20 hover:border-amber-500/40 bg-linear-to-r from-amber-500/10 to-orange-500/10 hover:from-amber-500/20 hover:to-orange-500/20 transition-all duration-300"
-              )}
+              className="
+      relative flex items-center gap-2
+      px-3.5 py-2 rounded-lg
+      bg-amber-500/10
+      border border-amber-400/20
+      text-amber-300 text-sm font-medium
+      hover:bg-amber-500/15
+      hover:border-amber-400/40
+      transition-all duration-200
+      shadow-[0_0_0_rgba(0,0,0,0)]
+      hover:shadow-[0_4px_20px_rgba(251,191,36,0.15)]
+    "
             >
-              <Sparkles className="w-4 h-4 text-amber-400 hover:text-amber-300" />
-              <span className="text-sm font-medium text-amber-400/90 hover:text-amber-300">
-                Pro
-              </span>
+              <Sparkles className="w-4 h-4 text-amber-300" />
+              Pro
             </Link>
           )}
+
           <SignedIn>
-            <RunButton />
+            <div className="flex items-center gap-3">
+              <RunButton />
+
+              <div className="pl-3 border-l border-white/5">
+                <HeaderProfileBtn />
+              </div>
+            </div>
           </SignedIn>
 
-          <div className="pl-3 border-l border-gray-800">
-            <HeaderProfileBtn />
-          </div>
+          <SignedOut>
+            <div className="flex items-center gap-2">
+              <SignInButton>
+                <Button
+                  variant="ghost"
+                  className="
+            h-9 px-4
+            bg-[#14151b] border border-white/5
+            hover:border-white/10 hover:bg-[#1a1b22]
+            text-gray-300 hover:text-white
+            rounded-lg text-sm font-medium
+            transition-all duration-200
+          "
+                >
+                  Sign In
+                </Button>
+              </SignInButton>
+
+              <SignUpButton>
+                <Button
+                  className="
+            h-9 px-4
+            rounded-lg text-sm font-medium
+            bg-blue-600 hover:bg-blue-500
+            text-white
+            transition-all duration-200
+            shadow-[0_4px_20px_rgba(59,130,246,0.25)]
+          "
+                >
+                  Sign Up
+                </Button>
+              </SignUpButton>
+            </div>
+          </SignedOut>
         </div>
       </div>
     </div>

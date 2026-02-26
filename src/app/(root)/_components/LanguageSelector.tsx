@@ -28,54 +28,92 @@ const LanguageSelector = ({ hasAccess }: Props) => {
   };
 
   return (
-    <div>
-      <DropdownMenu modal={false}>
-        <DropdownMenuTrigger asChild>
-          <Button>
-            {LanguageIcon(currentLanguageObj.id, "1.2rem")}
+    <DropdownMenu modal={false}>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="ghost"
+          className="
+        h-9 px-3 gap-2
+        bg-[#14151b] border border-white/5
+        hover:border-white/10 hover:bg-[#1a1b22]
+        text-gray-300 hover:text-white
+        rounded-lg
+        transition-all duration-200
+      "
+        >
+          {LanguageIcon(currentLanguageObj.id, "1.1rem")}
+          <span className="text-sm font-medium">
             {currentLanguageObj.label}
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className=" bg-primary border-none" align="start">
-          <DropdownMenuGroup className="flex flex-col gap-0">
-            {Object.values(LANGUAGE_CONFIGS).map((config) => {
-              const { id, label } = config;
-              const isLocked = !hasAccess && id !== "javascript";
-              return (
-                <DropdownMenuItem
-                  className="p-0"
-                  key={id}
-                  onSelect={() => {
-                    if (!isLocked) setLanguage(id);
-                  }}
-                >
-                  <Button
-                    className={cn(
-                      `rounded-none w-full flex font-semibold py-1 px-2 items-center justify-between gap-6`,
-                      {
-                        "rounded-sm border-2 border-gray-600":
-                          currentLanguageObj?.id === id,
-                      },
-                    )}
-                    disabled={isLocked}
-                    onClick={() => handleClick(id)}
-                  >
-                    <div className="flex gap-4 items-center">
-                      {LanguageIcon(id, "1.2rem")}
+          </span>
+        </Button>
+      </DropdownMenuTrigger>
 
-                      <span>{label}</span>
-                    </div>
-                    {isLocked && (
-                      <LucideLock className="size-3 text-gray-500" />
-                    )}
-                  </Button>
-                </DropdownMenuItem>
-              );
-            })}
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
+      <DropdownMenuContent
+        align="start"
+        className="
+      w-60 p-2
+      bg-[#111218]
+      border border-white/5
+      rounded-xl
+      shadow-[0_10px_40px_rgba(0,0,0,0.5)]
+      backdrop-blur-xl
+    "
+      >
+        <DropdownMenuGroup className="flex flex-col gap-1">
+          {Object.values(LANGUAGE_CONFIGS).map((config) => {
+            const { id, label } = config;
+            const isLocked = !hasAccess && id !== "javascript";
+
+            return (
+              <DropdownMenuItem
+                key={id}
+                onSelect={() => {
+                  if (!isLocked) setLanguage(id);
+                }}
+                className="
+              p-0 rounded-lg
+              data-[highlighted]:bg-white/10
+              data-[highlighted]:text-white
+              transition-colors
+            "
+              >
+                <button
+                  onClick={() => handleClick(id)}
+                  disabled={isLocked}
+                  className={cn(
+                    `
+                w-full flex items-center justify-between
+                px-3 py-2 rounded-lg
+                text-sm font-medium
+                transition-all duration-150
+                `,
+                    {
+                      // Active language
+                      "bg-white/5 text-white border border-white/10":
+                        currentLanguageObj?.id === id,
+
+                      // Normal state
+                      "text-gray-300 hover:text-white":
+                        currentLanguageObj?.id !== id && !isLocked,
+
+                      // Locked state
+                      "text-gray-500 cursor-not-allowed opacity-60": isLocked,
+                    },
+                  )}
+                >
+                  <div className="flex gap-3 items-center">
+                    {LanguageIcon(id, "1.1rem")}
+                    <span>{label}</span>
+                  </div>
+
+                  {isLocked && <LucideLock className="size-3 text-gray-500" />}
+                </button>
+              </DropdownMenuItem>
+            );
+          })}
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
 

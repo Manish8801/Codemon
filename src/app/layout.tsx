@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import ConvexClientProvider from "@/components/providers/ConvexClientProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
@@ -36,7 +35,7 @@ export default function RootLayout({
         >
           <ConvexClientProvider>
             {children}
-            <Footer />
+
             <Toaster />
           </ConvexClientProvider>
         </ClerkProvider>

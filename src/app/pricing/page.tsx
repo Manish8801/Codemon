@@ -21,26 +21,16 @@ async function PricingPage() {
   if (convexUser?.isPro) return <ProPlanView />;
 
   return (
-    <div
-      className="relative min-h-screen bg-[#0a0a0f] selection:bg-blue-500/20
-     selection:text-blue-200"
-    >
+    <div className="relative min-h-screen bg-[#0a0a0f] selection:bg-blue-500/20 selection:text-blue-200">
       <NavigationHeader />
-
-      {/* main content */}
 
       <main className="relative pt-32 pb-24 px-4">
         <div className="max-w-7xl mx-auto">
-          {/* Hero   */}
+          {/* Hero Section */}
           <div className="text-center mb-24">
             <div className="relative inline-block">
-              <div className="absolute -inset-px bg-linear-to-r from-blue-500 to-purple-500 blur-xl opacity-10" />
-              <h1
-                className="relative text-5xl md:text-6xl lg:text-7xl font-semibold bg-linear-to-r
-               from-gray-100 to-gray-300 text-transparent bg-clip-text mb-8"
-              >
-                Elevate Your <br />
-                Development Experience
+              <h1 className="relative text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-6">
+                Elevate Your <br /> Development Experience
               </h1>
             </div>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -54,13 +44,10 @@ async function PricingPage() {
             {ENTERPRISE_FEATURES.map((feature) => (
               <div
                 key={feature.label}
-                className="group relative bg-linear-to-b from-[#12121a] to-[#0a0a0f] rounded-2xl p-6 hover:transform hover:scale-[1.02] transition-all duration-300"
+                className="group relative bg-[#12121a] rounded-2xl p-6 hover:scale-[1.02] transition-transform duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
               >
                 <div className="relative">
-                  <div
-                    className="w-12 h-12 rounded-xl bg-linear-to-br from-blue-500/10 to-purple-500/10 
-                  flex items-center justify-center mb-4 ring-1 ring-gray-800/60 group-hover:ring-blue-500/20"
-                  >
+                  <div className="w-12 h-12 rounded-xl bg-[#1e1e2e] flex items-center justify-center mb-4 ring-1 ring-gray-800/60 group-hover:ring-blue-500/20">
                     <feature.icon className="w-6 h-6 text-blue-400" />
                   </div>
 
@@ -74,71 +61,56 @@ async function PricingPage() {
           </div>
 
           {/* Pricing Card */}
-
           <div className="relative max-w-4xl mx-auto">
-            <div
-              className="absolute -inset-px bg-linear-to-r from-blue-500
-             to-purple-500 rounded-2xl blur opacity-10"
-            />
-            <div className="relative bg-[#12121a]/90 backdrop-blur-xl rounded-2xl">
-              <div
-                className="absolute inset-x-0 -top-px h-px bg-linear-to-r 
-              from-transparent via-blue-500/50 to-transparent"
-              />
-              <div className="absolute inset-x-0 -bottom-px h-px bg-linear-to-r from-transparent via-purple-500/50 to-transparent" />
-
-              <div className="relative p-8 md:p-12">
-                {/* header */}
-                <div className="text-center mb-12">
-                  <div className="inline-flex p-3 rounded-xl bg-linear-to-br from-blue-500/10 to-purple-500/10 ring-1 ring-gray-800/60 mb-6">
-                    <Star className="w-8 h-8 text-blue-400" />
-                  </div>
-                  <h2 className="text-3xl font-semibold text-white mb-4">
-                    Lifetime Pro Access
-                  </h2>
-                  <div className="flex items-baseline justify-center gap-2 mb-4">
-                    <span className="text-2xl text-gray-400">$</span>
-                    <span className="text-6xl font-semibold bg-linear-to-r from-gray-100 to-gray-300 text-transparent bg-clip-text">
-                      39
-                    </span>
-                    <span className="text-xl text-gray-400">one-time</span>
-                  </div>
-                  <p className="text-gray-400 text-lg">
-                    Unlock the full potential of CodeCraft
-                  </p>
+            <div className="relative bg-[#12121a]/90 backdrop-blur-xl rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] border border-white/5">
+              {/* Header */}
+              <div className="relative p-8 md:p-12 text-center">
+                <div className="inline-flex p-3 rounded-xl bg-[#1e1e2e] ring-1 ring-gray-800/60 mb-6">
+                  <Star className="w-8 h-8 text-blue-400" />
                 </div>
-
-                {/* Features grid */}
-                <div className="grid md:grid-cols-3 gap-12 mb-12">
-                  <FeatureCategory label="Development">
-                    {FEATURES.development.map((feature, idx) => (
-                      <FeatureItem key={feature + idx}>{feature}</FeatureItem>
-                    ))}
-                  </FeatureCategory>
-
-                  <FeatureCategory label="Collaboration">
-                    {FEATURES.collaboration.map((feature, idx) => (
-                      <FeatureItem key={feature + idx}>{feature}</FeatureItem>
-                    ))}
-                  </FeatureCategory>
-
-                  <FeatureCategory label="Deployment">
-                    {FEATURES.deployment.map((feature, idx) => (
-                      <FeatureItem key={feature + idx}>{feature}</FeatureItem>
-                    ))}
-                  </FeatureCategory>
+                <h2 className="text-3xl font-semibold text-white mb-4">
+                  Lifetime Pro Access
+                </h2>
+                <div className="flex items-baseline justify-center gap-2 mb-4">
+                  <span className="text-2xl text-gray-400">$</span>
+                  <span className="text-6xl font-semibold text-white">39</span>
+                  <span className="text-xl text-gray-400">one-time</span>
                 </div>
+                <p className="text-gray-400 text-lg">
+                  Unlock the full potential of CodeCraft
+                </p>
+              </div>
 
-                {/* CTA */}
-                <div className="flex justify-center">
-                  <SignedIn>
-                    <UpgradeButton />
-                  </SignedIn>
+              {/* Features Grid */}
+              <div className="grid md:grid-cols-3 gap-12 px-8 pb-12">
+                <FeatureCategory label="Development">
+                  {FEATURES.development.map((feature, idx) => (
+                    <FeatureItem key={feature + idx}>{feature}</FeatureItem>
+                  ))}
+                </FeatureCategory>
 
-                  <SignedOut>
-                    <LoginButton />
-                  </SignedOut>
-                </div>
+                <FeatureCategory label="Collaboration">
+                  {FEATURES.collaboration.map((feature, idx) => (
+                    <FeatureItem key={feature + idx}>{feature}</FeatureItem>
+                  ))}
+                </FeatureCategory>
+
+                <FeatureCategory label="Deployment">
+                  {FEATURES.deployment.map((feature, idx) => (
+                    <FeatureItem key={feature + idx}>{feature}</FeatureItem>
+                  ))}
+                </FeatureCategory>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex justify-center pb-8 gap-4">
+                <SignedIn>
+                  <UpgradeButton />
+                </SignedIn>
+
+                <SignedOut>
+                  <LoginButton />
+                </SignedOut>
               </div>
             </div>
           </div>

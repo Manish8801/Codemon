@@ -1,8 +1,7 @@
 "use client";
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { cn } from "@/lib/utils";
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import { useClerk } from "@clerk/nextjs";
 import { RotateCcwIcon, TypeIcon } from "lucide-react";
@@ -18,6 +17,7 @@ const Editor = dynamic(
   () => import("@monaco-editor/react").then((m) => m.Editor),
   { loading: () => <EditorViewSkeleton />, ssr: false },
 );
+
 const EditorPanel = () => {
   const [panelSize, setPanelSize] = useState<PanelSize>();
   const clerk = useClerk();
@@ -52,69 +52,61 @@ const EditorPanel = () => {
   };
 
   return (
-    <Panel
-      collapsible
-      defaultSize={50}
-      onResize={(size) => {
-        setPanelSize(size);
-      }}
-    >
-      <div className="w-full relative bg-[#12121a]/90 backdrop-blur  border border-white/5 p-4">
-        {/* Header */}
-        <div className="h-full w-full flex items-center justify-between mb-2">
+    <Panel collapsible defaultSize={50} onResize={(size) => setPanelSize(size)}>
+      <div className="flex flex-col h-full w-full bg-[#0f1117] border-r border-white/5">
+        {/* Toolbar */}
+        <div className="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-[#11131a] flex-shrink-0">
           <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#1e1e2e] ring-1 ring-white/5">
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#1a1d26] border border-white/5">
               <Image
                 src={"/" + language + ".png"}
                 alt="Logo"
-                width={24}
-                height={24}
+                width={22}
+                height={22}
               />
             </div>
             <div>
-              <h2 className="text-sm font-medium text-white">Code Editor</h2>
-              {panelSize && panelSize.inPixels > 550 && (
+              <h2 className="text-sm font-semibold text-white">Code Editor</h2>
+              {panelSize && panelSize?.inPixels > 550 && (
                 <span className="text-xs text-gray-500">
                   Write and execute your code
                 </span>
               )}
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            {/* Font Size Slider */}
-            <div className={cn(buttonVariants())}>
-              <TypeIcon className="size-4 text-gray-400" />
-              <div className="flex items-center gap-3">
-                <Slider
-                  onValueChange={(value) => handleFontSizeChange(value[0])}
-                  value={[fontSize]}
-                  min={12}
-                  max={24}
-                  step={1}
-                  className="w-20"
-                />
 
-                <span className="text-sm font-medium text-gray-400 min-w-8 text-center">
-                  {fontSize}
-                </span>
-              </div>
+          <div className="flex items-center gap-2">
+            {/* Font size slider */}
+            <div className="flex items-center gap-3 h-9 px-3 rounded-lg bg-[#14161d] border border-white/5">
+              <TypeIcon className="size-4 text-gray-400" />
+              <Slider
+                value={[fontSize]}
+                onValueChange={(v) => handleFontSizeChange(v[0])}
+                min={12}
+                max={24}
+                step={1}
+                className="w-20"
+              />
+              <span className="text-sm font-medium text-gray-400 min-w-8 text-center">
+                {fontSize}
+              </span>
             </div>
 
             <Button
               onClick={handleRefresh}
-              className="p-2 transition-colors"
-              aria-label="Reset to default code"
+              variant="ghost"
+              size="icon"
+              className="h-9 w-9 bg-[#14161d] rounded-lg border border-white/5 hover:bg-[#1a1d26] hover:border-white/10 transition-all"
             >
               <RotateCcwIcon className="size-4 text-gray-400" />
             </Button>
 
-            {/* Share Button */}
             <ShareSnippetDialog />
           </div>
         </div>
 
-        {/* Editor  */}
-        <div className="relative group  ring-1 ring-white/5">
+        {/* Editor */}
+        <div className="flex-1">
           {clerk.loaded && (
             <Editor
               height="600px"

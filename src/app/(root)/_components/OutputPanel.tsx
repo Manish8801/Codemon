@@ -1,6 +1,4 @@
 "use client";
-
-import useMounted from "@/hooks/useMounted";
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import { AlertTriangle, CheckCircle, Clock, Terminal } from "lucide-react";
 import { Panel } from "react-resizable-panels";
@@ -9,26 +7,23 @@ import RunningCodeSkeleton from "./RunningCodeSkeleton";
 
 const OutputPanel = () => {
   const { output, error, isRunning } = useCodeEditorStore();
-  const mounted = useMounted();
-
-  if (!mounted) {
-    return <RunningCodeSkeleton />;
-  }
 
   return (
     <Panel collapsible defaultSize={50}>
-      <div className="flex flex-col gap-2 h-full bg-[#181825] p-4">
+      <div className="flex flex-col h-full bg-[#111218] border-l border-white/5 p-4">
         {/* Header */}
-        <div className="relative mb-2 flex items-center justify-between">
-          <div className="flex gap-2 items-center">
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-2">
             <Terminal className="size-4 text-blue-400" />
-            <span className="text-sm font-semibold">Output</span>
+            <span className="text-sm font-semibold text-white">Output</span>
           </div>
           <CopyButton />
         </div>
+
         {/* Output Area */}
-        <div className="relative h-full">
-          <div className="relative h-full bg-[#1e1e2e]/50 backdrop-blur-sm border border-[#313244] p-4  overflow-auto font-mono text-sm">
+        <div className="flex-1 relative">
+          <div className="flex flex-col h-full bg-[#1a1a2e]/60 backdrop-blur-md border border-white/10 rounded-lg p-4 overflow-auto font-mono text-sm">
+            {/* Running state */}
             {isRunning ? (
               <RunningCodeSkeleton />
             ) : error ? (
@@ -47,7 +42,9 @@ const OutputPanel = () => {
                   <CheckCircle className="w-5 h-5" />
                   <span className="font-medium">Execution Successful</span>
                 </div>
-                <pre className="whitespace-pre-wrap text-gray-300">{output}</pre>
+                <pre className="whitespace-pre-wrap text-gray-300">
+                  {output}
+                </pre>
               </div>
             ) : (
               <div className="h-full flex flex-col items-center justify-center text-gray-500">

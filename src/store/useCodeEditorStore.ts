@@ -82,10 +82,11 @@ export const useCodeEditorStore = create<Store>()(
                 version: runtime.version,
                 files: [{ content: code }],
               }),
-            }
+            },
           );
 
           const data = await response.json();
+          console.log(data);
 
           if (data.message) {
             set({ error: data.message });
@@ -146,8 +147,8 @@ export const useCodeEditorStore = create<Store>()(
         const { fontSize, theme, language } = state;
         return { fontSize, theme, language };
       },
-    }
-  )
+    },
+  ),
 );
 
 export const getExecutionResult = () => {
