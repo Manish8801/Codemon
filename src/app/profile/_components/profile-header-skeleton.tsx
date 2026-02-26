@@ -61,6 +61,6 @@ const ProfileHeaderSkeleton = () => {
       </div>
     </div>
   );
-}
+};
 
 export default ProfileHeaderSkeleton;

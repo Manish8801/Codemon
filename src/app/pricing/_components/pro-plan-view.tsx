@@ -1,4 +1,4 @@
-import NavigationHeader from "@/components/NavigationHeader";
+import NavigationHeader from "@/components/navigation-header";
 import { ArrowRight, Command, Star } from "lucide-react";
 import Link from "next/link";
 
@@ -20,7 +20,9 @@ function ProPlanView() {
                 <Star className="w-8 h-8 text-purple-400" />
               </div>
 
-              <h1 className="text-3xl font-semibold text-white mb-3">Pro Plan Active</h1>
+              <h1 className="text-3xl font-semibold text-white mb-3">
+                Pro Plan Active
+              </h1>
               <p className="text-gray-400 mb-8 text-lg">
                 Experience the full power of professional development
               </p>

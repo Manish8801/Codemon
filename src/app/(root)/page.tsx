@@ -1,8 +1,8 @@
 import { GripVertical } from "lucide-react";
 import { Group, Separator } from "react-resizable-panels";
-import EditorPanel from "./_components/EditorPanel";
-import Header from "./_components/Header";
-import OutputPanelTrial from "./_components/OutputPanel";
+import EditorPanel from "./_components/editor-panel";
+import Header from "./_components/header";
+import OutputPanelTrial from "./_components/output-panel";
 
 export default function Home() {
   return (

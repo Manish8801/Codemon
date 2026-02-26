@@ -10,8 +10,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Panel, PanelSize } from "react-resizable-panels";
 import { defineMonacoThemes, LANGUAGE_CONFIGS } from "../_constants";
-import { EditorViewSkeleton } from "./EditorPanelSkeleton";
-import ShareSnippetDialog from "./ShareSnippetDialog";
+import { EditorViewSkeleton } from "./editor-panel-skeleton";
+import ShareSnippetDialog from "./share-snippet-dialog";
 
 const Editor = dynamic(
   () => import("@monaco-editor/react").then((m) => m.Editor),

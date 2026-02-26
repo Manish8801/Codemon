@@ -2,8 +2,8 @@
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import { AlertTriangle, CheckCircle, Clock, Terminal } from "lucide-react";
 import { Panel } from "react-resizable-panels";
-import CopyButton from "./CopyButton";
-import RunningCodeSkeleton from "./RunningCodeSkeleton";
+import CopyButton from "./copy-button";
+import RunningCodeSkeleton from "./running-code-skeleton";
 
 const OutputPanel = () => {
   const { output, error, isRunning } = useCodeEditorStore();

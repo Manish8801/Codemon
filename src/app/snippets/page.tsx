@@ -1,6 +1,6 @@
 "use client";
 
-import NavigationHeader from "@/components/NavigationHeader";
+import NavigationHeader from "@/components/navigation-header";
 import { useQuery } from "convex/react";
 import { BookOpen, Code, Grid, Layers, Search, Tag, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";

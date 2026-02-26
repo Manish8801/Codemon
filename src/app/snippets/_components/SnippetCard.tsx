@@ -5,7 +5,7 @@ import { useMutation } from "convex/react";
 import { useState } from "react";
 import { api } from "../../../../convex/_generated/api";
 
-import StarButton from "@/components/StarButton";
+import StarButton from "@/components/start-button";
 import { Clock, Trash2Icon, User } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";

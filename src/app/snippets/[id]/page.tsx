@@ -1,7 +1,7 @@
 "use client";
 
 import { defineMonacoThemes, LANGUAGE_CONFIGS } from "@/app/(root)/_constants";
-import NavigationHeader from "@/components/NavigationHeader";
+import NavigationHeader from "@/components/navigation-header";
 import { Editor } from "@monaco-editor/react";
 import { useQuery } from "convex/react";
 import { Clock, Code, MessageSquare, User } from "lucide-react";

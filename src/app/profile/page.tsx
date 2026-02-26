@@ -1,7 +1,7 @@
 "use client";
 
-import NavigationHeader from "@/components/NavigationHeader";
-import StarButton from "@/components/StarButton";
+import NavigationHeader from "@/components/navigation-header";
+import StarButton from "@/components/start-button";
 import useMounted from "@/hooks/useMounted";
 import { useUser } from "@clerk/nextjs";
 import { usePaginatedQuery, useQuery } from "convex/react";
@@ -19,9 +19,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { api } from "../../../convex/_generated/api";
-import CodeBlock from "./_components/CodeBlock";
-import ProfileHeader from "./_components/ProfileHeader";
-import ProfileHeaderSkeleton from "./_components/ProfileHeaderSkeleton";
+import CodeBlock from "./_components/code-block";
+import ProfileHeader from "./_components/profile-header";
+import ProfileHeaderSkeleton from "./_components/profile-header-skeleton";
 
 const TABS = [
   {
@@ -41,7 +41,7 @@ function ProfilePage() {
   const { user, isLoaded } = useUser();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"executions" | "starred">(
-    "executions"
+    "executions",
   );
 
   const userStats = useQuery(api.codeExecutions.getUserStats, {
@@ -60,7 +60,7 @@ function ProfilePage() {
     {
       userId: user?.id ?? "",
     },
-    { initialNumItems: 5 }
+    { initialNumItems: 5 },
   );
 
   const userData = useQuery(api.users.getUser, { userId: user?.id ?? "" });
@@ -166,7 +166,7 @@ function ProfilePage() {
                               <span className="text-xs text-gray-400">•</span>
                               <span className="text-xs text-gray-400">
                                 {new Date(
-                                  execution._creationTime
+                                  execution._creationTime,
                                 ).toLocaleString()}
                               </span>
                             </div>
@@ -291,7 +291,7 @@ function ProfilePage() {
                                 <Clock className="w-4 h-4" />
                                 <span>
                                   {new Date(
-                                    snippet._creationTime
+                                    snippet._creationTime,
                                   ).toLocaleDateString()}
                                 </span>
                               </div>

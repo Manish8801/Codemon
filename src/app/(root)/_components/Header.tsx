@@ -6,10 +6,10 @@ import { ConvexHttpClient } from "convex/browser";
 import { Blocks, Code2, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { api } from "../../../../convex/_generated/api";
-import HeaderProfileBtn from "./HeaderProfileBtn";
-import LanguageSelector from "./LanguageSelector";
-import RunButton from "./RunButton";
-import ThemeSelector from "./ThemeSelector";
+import HeaderProfileBtn from "./header-profile";
+import LanguageSelector from "./language-selector";
+import RunButton from "./run-button";
+import ThemeSelector from "./theme-selector";
 
 async function Header() {
   const convex = new ConvexHttpClient(
