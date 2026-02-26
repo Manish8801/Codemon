@@ -2,7 +2,6 @@
 
 import NavigationHeader from "@/components/navigation-header";
 import StarButton from "@/components/start-button";
-import useMounted from "@/hooks/useMounted";
 import { useUser } from "@clerk/nextjs";
 import { usePaginatedQuery, useQuery } from "convex/react";
 import {
@@ -21,7 +20,7 @@ import { useState } from "react";
 import { api } from "../../../convex/_generated/api";
 import CodeBlock from "./_components/code-block";
 import ProfileHeader from "./_components/profile-header";
-import ProfileHeaderSkeleton from "./_components/profile-header-skeleton";
+import ProfileHeaderSkeleton from "./_components/skeletons/profile-header-skeleton";
 
 const TABS = [
   {
@@ -37,7 +36,6 @@ const TABS = [
 ];
 
 function ProfilePage() {
-  const mounted = useMounted();
   const { user, isLoaded } = useUser();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"executions" | "starred">(
@@ -70,7 +68,6 @@ function ProfilePage() {
   };
 
   if (!user && isLoaded) return router.push("/");
-  if (!mounted) return null;
   return (
     <div className="min-h-screen bg-[#0a0a0f]">
       <NavigationHeader />

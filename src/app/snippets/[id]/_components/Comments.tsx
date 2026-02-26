@@ -6,8 +6,8 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { api } from "../../../../../convex/_generated/api";
 import { Id } from "../../../../../convex/_generated/dataModel";
-import Comment from "./Comment";
-import CommentForm from "./CommentForm";
+import CommentForm from "./comment-form";
+import Comment from "./single-comment";
 
 type Props = { snippetId: Id<"snippets"> };
 
@@ -15,7 +15,7 @@ const Comments = ({ snippetId }: Props) => {
   const { user } = useUser();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [deletingCommentId, setDeletingCommentId] = useState<string | null>(
-    null
+    null,
   );
 
   const comments = useQuery(api.snippets.getComments, { snippetId }) || [];
@@ -88,5 +88,5 @@ const Comments = ({ snippetId }: Props) => {
       </div>
     </div>
   );
-}
+};
 export default Comments;

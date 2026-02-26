@@ -1,7 +1,7 @@
 import Image from "next/image";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import CopyButton from "./CopyButton";
+import CopyButton from "./copy-button";
 
 type Props = { language: string; code: string };
 

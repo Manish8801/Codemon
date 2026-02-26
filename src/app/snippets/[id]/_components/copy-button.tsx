@@ -4,8 +4,8 @@ import { Check, Copy } from "lucide-react";
 import { useState } from "react";
 
 type Props = {
-    code : string
-}
+  code: string;
+};
 
 const CopyButton = ({ code }: Props) => {
   const [copied, setCopied] = useState(false);
@@ -29,6 +29,6 @@ const CopyButton = ({ code }: Props) => {
       )}
     </button>
   );
-}
+};
 
 export default CopyButton;

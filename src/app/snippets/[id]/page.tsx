@@ -9,9 +9,9 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { api } from "../../../../convex/_generated/api";
 import { Id } from "../../../../convex/_generated/dataModel";
-import Comments from "./_components/Comments";
-import CopyButton from "./_components/CopyButton";
-import SnippetLoadingSkeleton from "./_components/SnippetLoadingSkeleton";
+import Comments from "./_components/comments";
+import CopyButton from "./_components/copy-button";
+import SnippetLoadingSkeleton from "./_components/skeletons/snippet-loading-skeleton";
 
 export default function SnippetDetailPage() {
   const snippetId = useParams().id;

@@ -1,12 +1,12 @@
 "use client";
 import { CodeIcon, SendIcon } from "lucide-react";
 import { useState } from "react";
-import CommentContent from "./CommentContent";
+import CommentContent from "./comment-content";
 
 type Props = {
   onSubmit: (comment: string) => Promise<void>;
   isSubmitting: boolean;
-}
+};
 
 function CommentForm({ isSubmitting, onSubmit }: Props) {
   const [comment, setComment] = useState("");

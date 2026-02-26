@@ -7,8 +7,8 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import { api } from "../../../convex/_generated/api";
-import SnippetCard from "./_components/SnippetCard";
-import SnippetsPageSkeleton from "./_components/SnippetsPageSkeleton";
+import SnippetCard from "./_components/snippet-card";
+import SnippetsPageSkeleton from "./_components/skeletons/snippet-page-skeleton";
 
 export default function SnippetsPage() {
   const snippets = useQuery(api.snippets.getSnippets);

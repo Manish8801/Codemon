@@ -10,7 +10,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Panel, PanelSize } from "react-resizable-panels";
 import { defineMonacoThemes, LANGUAGE_CONFIGS } from "../_constants";
-import { EditorViewSkeleton } from "./editor-panel-skeleton";
+import { EditorViewSkeleton } from "./skeletons/editor-panel-skeleton";
 import ShareSnippetDialog from "./share-snippet-dialog";
 
 const Editor = dynamic(

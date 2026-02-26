@@ -1,10 +1,9 @@
-import CodeBlock from "./CodeBlock";
+import CodeBlock from "./code-block";
 
 const REGEX = /(```[\w-]*\n[\s\S]*?\n```)/g;
 type Props = { content: string };
 
 const CommentContent = ({ content }: Props) => {
-
   const parts = content.split(REGEX);
   return (
     <div className="max-w-none text-white">

@@ -1,11 +1,6 @@
 "use client";
 
-import useMounted from "@/hooks/useMounted";
-
 const ProfileHeaderSkeleton = () => {
-  const mounted = useMounted();
-  if (!mounted) return <div className="h-100 w-full" />;
-
   return (
     <div
       className="relative mb-8 bg-linear-to-br from-[#12121a] to-[#1a1a2e] rounded-2xl p-8 border
