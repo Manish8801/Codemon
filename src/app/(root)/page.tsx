@@ -27,7 +27,7 @@ export default function Home() {
             <Separator
               className="
       relative flex items-center justify-center
-      w-[10px] 
+      w-2.5 
       bg-[#0f1015]
       transition-colors duration-200
       hover:bg-[#151720]
