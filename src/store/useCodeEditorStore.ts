@@ -86,10 +86,10 @@ export const useCodeEditorStore = create<Store>()(
           );
 
           const data = await response.json();
-          console.log(data);
 
           if (data.message) {
             set({ error: data.message });
+            return;
           }
 
           if (data.compile && data.compile.code !== 0) {

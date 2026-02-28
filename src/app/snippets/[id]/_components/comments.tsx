@@ -11,7 +11,7 @@ import Comment from "./single-comment";
 
 type Props = { snippetId: Id<"snippets"> };
 
-const Comments = ({ snippetId }: Props) => {
+export default function Comments({ snippetId }: Props) {
   const { user } = useUser();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [deletingCommentId, setDeletingCommentId] = useState<string | null>(
@@ -88,5 +88,4 @@ const Comments = ({ snippetId }: Props) => {
       </div>
     </div>
   );
-};
-export default Comments;
+}
